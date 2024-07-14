@@ -6,8 +6,18 @@
   "license": "MIT",
   "repository": {
     "url": "https://github.com/princevish/vish-hooks2",
-    "type": "git",
-    "directory": "packages/vish-hooks2"
+    "type": "git"
+  },
+  "bugs": {
+    "url": "https://github.com/princevish/vish-hooks2/issues"
+  },
+  "homepage": "https://github.com/princevish/vish-hooks2#readme",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/princevish"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "keywords": [
     "frontend",
