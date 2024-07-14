@@ -1,0 +1,50 @@
+{
+  "name": "@princevish/vish-hooks2",
+  "version": "0.0.0",
+  "author": "Prince Vishwakarma <princevworld@gmail.com>",
+  "description": "A collection of 10+ hooks for state and UI management",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/princevish/vish-hooks2",
+    "type": "git",
+    "directory": "packages/vish-hooks2"
+  },
+  "keywords": [
+    "frontend",
+    "hooks",
+    "library",
+    "next",
+    "nextjs",
+    "react",
+    "react-hooks",
+    "state"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "lint": "tsc",
+    "build": "tsup",
+    "version:add": "changeset add",
+    "version:commit": "changeset version",
+    "version:publish": "changeset publish",
+    "publish": "npm publish --access public",
+    "release": "npm run lint && npm run build && npm run version:add && npm run version:commit && npm run version:publish"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "@types/node": "^20.12.7",
+    "@types/react": "^18.3.3",
+    "husky": "^9.0.11",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.5"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}
