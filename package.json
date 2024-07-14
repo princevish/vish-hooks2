@@ -1,6 +1,6 @@
 {
   "name": "@princevish/vish-hooks2",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "Prince Vishwakarma <princevworld@gmail.com>",
   "description": "A collection of 10+ hooks for state and UI management",
   "license": "MIT",
