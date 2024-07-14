@@ -1,10 +1,10 @@
-# Vish-hooks2 React Hooks
+# @princevish/vish-hooks2 React Hooks
 
 This project includes a set of custom React hooks. Here are the hooks and their usage examples:
 
 ## Table of Contents
 
-- [Vish-hooks2 React Hooks](#vish-hooks2-react-hooks)
+- [@princevish/vish-hooks2 React Hooks](#princevishvish-hooks2-react-hooks)
   - [Table of Contents](#table-of-contents)
   - [usePagination](#usepagination)
   - [useDeviceDetection](#usedevicedetection)
@@ -32,7 +32,7 @@ This hook allows you to manage pagination.
 
 ```javascript
 import React, { useState } from "react";
-import { usePagination } from "vish-hooks";
+import { usePagination } from "@princevish/vish-hooks2";
 
 const MyComponent = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -80,7 +80,7 @@ This hook allows you to detect the device type.
 
 ```javascript
 import React from "react";
-import { useDeviceDetection } from "vish-hooks";
+import { useDeviceDetection } from "@princevish/vish-hooks2";
 
 const MyComponent = () => {
   const { isMobile, isDesktop } = useDeviceDetection();
@@ -100,7 +100,7 @@ This hook allows you to manage query params.
 
 ```javascript
 import React from "react";
-import { useQueryParam } from "vish-hooks";
+import { useQueryParam } from "@princevish/vish-hooks2";
 
 const MyComponent = () => {
   const [searchQuery, setSearchQuery] = useQueryParam("q", "");
@@ -129,7 +129,7 @@ const MyComponent = () => {
 This hook allows you to manage focus on a particular element.
 
 ```javascript
-import { useFocusRef } from "vish-hooks";
+import { useFocusRef } from "@princevish/vish-hooks2";
 
 const Component = () => {
   const [ref, isFocused] = useFocusRef();
@@ -143,7 +143,7 @@ const Component = () => {
 This hook allows you to check if the component is rendered for the first time.
 
 ```javascript
-import { useIsFirstRender } from "vish-hooks";
+import { useIsFirstRender } from "@princevish/vish-hooks2";
 
 const Component = () => {
   const isFirstRender = useIsFirstRender();
@@ -157,7 +157,7 @@ const Component = () => {
 This hook allows you to check if the component is mounted.
 
 ```javascript
-import { useIsMounted } from "vish-hooks";
+import { useIsMounted } from "@princevish/vish-hooks2";
 
 const Component = () => {
   const isMounted = useIsMounted();
@@ -171,7 +171,7 @@ const Component = () => {
 This hook allows you to get the previous value of a state.
 
 ```javascript
-import { usePrevious } from "vish-hooks";
+import { usePrevious } from "@princevish/vish-hooks2";
 
 const Component = () => {
   const [count, setCount] = useState(0);
@@ -193,7 +193,7 @@ const Component = () => {
 This hook allows you to fetch data using SWR.
 
 ```javascript
-import { useSWR } from "vish-hooks";
+import { useSWR } from "@princevish/vish-hooks2";
 
 const Component = () => {
   const { data, error } = useSWR(
@@ -212,7 +212,7 @@ const Component = () => {
 This hook allows you to toggle between two states.
 
 ```javascript
-import { useToggle } from "vish-hooks";
+import { useToggle } from "@princevish/vish-hooks2";
 
 const Component = () => {
   const [isOn, toggleIsOn] = useToggle(false);
@@ -231,16 +231,15 @@ const Component = () => {
 This hook allows you to set a timeout.
 
 ```javascript
-import { useTimeout } from "vish-hooks";
+import { useTimeout } from "@princevish/vish-hooks2";
 
 const Component = () => {
-  const [isReady, cancel, reset] = useTimeout(5000);
+  const [isReady, setIsReady] = useState(false);
+   useTimeout(() => setIsReady(true), 5000);
 
   return (
     <div>
       <p>{isReady ? "Ready" : "Not Ready"}</p>
-      <button onClick={cancel}>Cancel</button>
-      <button onClick={reset}>Reset</button>
     </div>
   );
 };
@@ -251,7 +250,7 @@ const Component = () => {
 This hook allows you to run an effect only when the component is updated.
 
 ```javascript
-import { useUpdateEffect } from "vish-hooks";
+import { useUpdateEffect } from "@princevish/vish-hooks2";
 
 const Component = () => {
   const [count, setCount] = useState(10);
@@ -274,7 +273,7 @@ const Component = () => {
 This hook allows you to run an effect only once.
 
 ```javascript
-import { useEffectOnce } from "vish-hooks";
+import { useEffectOnce } from "@princevish/vish-hooks2";
 
 const Component = () => {
   useEffectOnce(() => {
@@ -290,7 +289,7 @@ const Component = () => {
 This hook allows you to detect clicks outside a particular element.
 
 ```javascript
-import { useClickOutside } from "vish-hooks";
+import { useClickOutside } from "@princevish/vish-hooks2";
 
 const Component = () => {
   const ref = useRef();
@@ -317,10 +316,10 @@ const Component = () => {
 This hook allows you to manage an array.
 
 ```javascript
-import { useArray } from "vish-hooks";
+import { useArray } from "@princevish/vish-hooks2";
 
 const Component = () => {
-  const [todos, { push, remove, filter, update }] = useArray([
+  const { value, push, removeByIndex} = useArray([
     { id: 1, text: "Learn React" },
     { id: 2, text: "Learn Firebase" },
     { id: 3, text: "Learn GraphQL" },
@@ -331,14 +330,11 @@ const Component = () => {
       <button onClick={() => push({ id: 4, text: "Learn Hooks" })}>
         Add Todo
       </button>
-      <button onClick={() => update(1, { id: 1, text: "Learn Hooks" })}>
-        Update Todo
-      </button>
       <button onClick={() => remove(1)}>Remove Todo</button>
-      <button onClick={() => filter((todo) => todo.id !== 1)}>
+      <button onClick={() => removeByIndex(1)}>
         Remove Todo
       </button>
-      {todos.map((todo) => (
+      {value.map((todo) => (
         <div key={todo.id}>{todo.text}</div>
       ))}
     </div>
@@ -351,7 +347,7 @@ const Component = () => {
 This hook allows you to debounce a value.
 
 ```javascript
-import { useDebounce } from "vish-hooks";
+import { useDebounce } from "@princevish/vish-hooks2";
 
 const Component = () => {
   const [value, setValue] = useState("");
@@ -377,7 +373,7 @@ const Component = () => {
 This hook allows you to detect if the mouse is over a particular element.
 
 ```javascript
-import { useHover } from "vish-hooks";
+import { useHover } from "@princevish/vish-hooks2";
 
 const Component = () => {
   const [hoverRef, isHovered] = useHover();
@@ -396,7 +392,7 @@ const Component = () => {
 
 ```javascript
 import React from "react";
-import { useFocus } from "vish-hooks";
+import { useFocus } from "@princevish/vish-hooks2";
 
 const Component = () => {
   const [isFocused, setIsFocused] = useFocus();
